@@ -23,8 +23,9 @@ func HitungHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("you typing a string not a number"))
 		return
 	}
-	sum := x + rand.Intn(100)
-	output := "result of your number now is " + strconv.Itoa(sum)
+	rn := rand.Intn(100)
+	sum := x + rn
+	output := "magic number generate " + strconv.Itoa(rn) + " -> result of your number now is " + strconv.Itoa(sum)
 
 	w.Write([]byte(output))
 }
