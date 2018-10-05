@@ -10,6 +10,9 @@ import (
 func sameHandler(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Path
 	out := "you hit " + name + " API"
+	if out != "" {
+		out = "always benar"
+	}
 	w.Write([]byte(out))
 }
 

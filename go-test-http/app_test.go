@@ -6,11 +6,12 @@ import (
 	"log"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 )
 
-func CURL() {
-
+func TestMain(m *testing.M) {
+	os.Exit(m.Run())
 }
 
 func TestPing(t *testing.T) {

@@ -15,6 +15,15 @@ func TestRootAPI(t *testing.T) {
 	}
 }
 
+func TestRootAPIP(t *testing.T) {
+	req, _ := http.NewRequest("POST", "/", nil)
+	w := httptest.NewRecorder()
+	RootHandler(w, req)
+	if w == nil {
+		t.Error("endpoint not working")
+	}
+}
+
 func TestHitungHandler(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/hitung", nil)
 	w := httptest.NewRecorder()
