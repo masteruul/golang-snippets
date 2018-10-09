@@ -2,13 +2,10 @@ package main
 
 import (
 	"bytes"
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
-	"net/http/httptest"
 )
 
 type HeaderCustom struct {
@@ -32,17 +29,7 @@ type BodyCustom struct {
 
 func main() {
 	//add client api
-	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello")
-	}))
-	defer server.Close()
-	client := http.Client{
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{
-				InsecureSkipVerify: true,
-			},
-		},
-	}
+	client := http.Client{}
 
 	fmt.Println("access tome API")
 	method := "PATCH"
