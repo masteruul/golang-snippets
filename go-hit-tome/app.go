@@ -35,7 +35,8 @@ func main() {
 	method := "PATCH"
 	endpointTome := "https://tome-staging.tokopedia.com/v2/batch/product/"
 	h := HeaderCustom{
-		Authorization: "Bearer HsuEIJ97SoKwKn2fNNsgrQ",
+		//Authorization: "Bearer HsuEIJ97SoKwKn2fNNsgrQ",
+		Authorization: "Bearer F5cxpdkTT4el0uLPkdWJCg",
 		ContentType:   "application/json",
 		Origin:        "https://www.tokopedia.com",
 		Referer:       "https://www.tokopedia.com",
