@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/julienschmidt/httprouter"
+	. "github.com/masteruul/golang-snippets/forum-go/redis"
 )
 
 type User struct {
@@ -55,17 +56,25 @@ func Register(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	w.Write([]byte("OK"))
 }
 
+func Redis(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	w.Header()
+	w.WriteHeader(200)
+	w.Write([]byte("OK"))
+
+	UseRedis()
+}
+
 func main() {
 	fmt.Println("Hello there ... " + os.Getenv("USER"))
 
 	user := User{name: "uul", secret: "rahasia"}
-
 	router := httprouter.New()
 	router.GET("/", Index)
 	router.GET("/hello/:name", Hello)
 	router.GET("/protected/", BasicAuth(Protected, user))
 	router.POST("/login", Login)
 	router.POST("/register", Register)
+	router.GET("/redis", Redis)
 
 	log.Fatal(http.ListenAndServe(":9003", router))
 }
